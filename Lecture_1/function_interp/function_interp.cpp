@@ -51,8 +51,9 @@ double myfunction(double x) {
 	// return 1.0/(1.0+4*x*x);
 	// return exp(-x*x);
 	// return sin(10.0*x);
-	return sin(5.0*x) + sin(25.0*x*x);
+	// return sin(5.0*x) + sin(25.0*x*x);
 	// return exp(-fabs(x));
+	return exp(-1.0/(x-1.0)/(x-1.0));
 }
 
 //	The function we want to interpolate at a set of nodes 'xNodes'
@@ -90,7 +91,7 @@ int main(int argc, char* argv[]) {
 	A.xlabel("x");
 	A.ylabel("y");
 	A.title("Actual Function");
-	A.axes(-1,1,(1-0.1*fmin/fabs(fmin))*fmin,(1+0.1*fmax/fabs(fmax))*fmax);
+	A.axes(-1,1,fmin,fmax);
 
 	plot myplot;
 	myplot.xdata(x);
