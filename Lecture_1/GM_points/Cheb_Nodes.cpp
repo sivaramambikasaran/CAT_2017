@@ -5,8 +5,23 @@
 int main(int argc, char* argv[]) {
 	cplot A("Cheb_GM.tex");
 	cplot B("Unif_GM.tex");
-	int L	=	14;
-	for (int l=L; l<L+1; ++l) {
+
+	A.xlabel("Nodes");
+	A.ylabel("Geometric mean distance");
+	A.title("GM of Chebyshev nodes versus nodes");
+	A.axes(-1,1,0.3,1.3);
+
+	B.xlabel("Nodes");
+	B.ylabel("Geometric mean distance");
+	B.title("GM of Uniform nodes versus nodes");
+	B.axes(-1,1,0.3,1.3);
+
+	plot myplot;
+
+	int Lmin	=	2;
+	int Lmax	=	6;
+
+	for (int l=Lmin; l<Lmax+1; ++l) {
 		int N	=	pow(2.0,l)-1;
 		std::vector<double> xNodes	=	get_Standard_Chebyshev_Nodes(N);
 		std::vector<double> xUniform;
@@ -31,24 +46,15 @@ int main(int argc, char* argv[]) {
 			geometricMean.push_back(exp(logGeometricMean[j]));
 			uniformMean.push_back(exp(logUniformMean[j]));
 		}
-		A.xlabel("Nodes");
-		A.ylabel("Geometric mean distance");
-		A.title("GM of Chebyshev nodes versus nodes");
-		A.axes(-1,1,0.4,1.2);
-		plot myplot;
 		myplot.xdata(xNodes);
 		myplot.ydata(geometricMean);
-		myplot.marks("no marks","red");
+		myplot.marks("*","red");
 		myplot.curve("thick", "blue", "" , false);
 		A.plots.push_back(myplot);
 
-		B.xlabel("Nodes");
-		B.ylabel("Geometric mean distance");
-		B.title("GM of Uniform nodes versus nodes");
-		B.axes(-1,1,0.3,1);
 		myplot.xdata(xUniform);
 		myplot.ydata(uniformMean);
-		myplot.marks("no marks","red");
+		myplot.marks("*","red");
 		myplot.curve("thick", "blue", "" , false);
 		B.plots.push_back(myplot);
 	}
