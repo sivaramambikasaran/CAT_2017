@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{sivaSAFRANshort}
+\chead{Constructive Approximation Theory: Assignment $2$}
+\begin{document}
+	\begin{enumerate}
+		\item
+		Consider the Runge function as before, $f(x) = \dfrac1{1+25x^2}$, where $x \in [-1,1]$. Approximate it using Chebyshev function and cubic splines using $\{5,9,17,33,65,129,257\}$ equally spaced nodes. Define the error due to interpolation as $$e_n = \max_{x \in [-1,1]}\magn{f(x)-\tilde{f}_n(x)}$$ where $\tilde{f}_n(x)$ is the approximation using the $n$ nodes. To obtain $e_n$ evaluate $\magn{f(x)-\tilde{f}_n(x)}$ at $100,000$ equi-spaced points on $[-1,1]$ and take the maximum value. Tabulate and plot these errors. In the plot, let the $X$ axis be number of nodes and $Y$ axis be $\log(e_n)$. Comment on the behavior of the error as a function of $n$ and which interpolant converges faster. What happens when you change the function to $1-\abs{x}$? Again, comment on the behavior of the error and convergence of both interpolants.
+		\item
+		The electric potential due to a unit charge is given by $1/R$, where $R$ is the distance from the charge.
+		\begin{itemize}
+			\item
+			If the point charge is located at $(0,0,a)$, compute the potential at a point $(r,\theta,\phi)$ given in spherical coorindates.
+			\item
+			Show that the potential can be written as $\dfrac1r \dsum_{k=0}^{\infty} \left(\dfrac{a}r\right)^k Q_k(\cos(\theta))$, where $Q_k$ is the $k^{th}$ Legendre polynomial and $a/r < 1$.
+			\item
+			For $r>2a$, how many terms in the expansion do we need to attain machine epsilon in double precision arithmetic, i.e., $2^{-53}$?
+		\end{itemize}
+		\item
+		Let $P_n$ be the set of all polynomials of degree not exceeding $n$. Show that the polynomial $p \in P_n$ that minimizes
+		$$\dint_{-1}^1 \left(x^{n+1}-p(x)\right)^2 dx$$
+		is $p(x) = x^{n+1}-q_{n+1}(x)$, where $q_{n+1}(x)$ is the Legendre poylnomial $Q_{n+1}$ scaled so that it has leading coefficient unity.
+	\end{enumerate}
+\end{document}
